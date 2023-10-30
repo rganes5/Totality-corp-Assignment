@@ -1,2 +1,2 @@
-# Totality-corp-api-gateway
-This is the API-gateway for the micro services built using go-lang.
+# Totality-corp-Assignment
+This has a api-gateway and a user service. 
