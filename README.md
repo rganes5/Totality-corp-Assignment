@@ -15,21 +15,13 @@ The project utilizes the following packages:
 4. [swag](https://github.com/swaggo/swag) with [gin-swagger](https://github.com/swaggo/gin-swagger) and [swaggo files](github.com/swaggo/files): Converts Go annotations to Swagger Documentation 2.0 for API documentation.
 5. [Clean Code Architecture](https://www.freecodecamp.org/news/a-quick-introduction-to-clean-architecture-990c014448d2/): Implemented to achieve separation of concerns and maintainability.
 6. [gRPC](https://grpc.io/): Employed for inter-microservice communication due to its lightweight and efficient protocol.
-7. [mockgen]: The project utilizes [mockgen](https://github.com/golang/mock), a code generation tool that automatically creates mocks for the defined interfaces. This is particularly useful for isolating units under test and validating their behavior without the need for real implementations. 
+7. [mockgen](https://github.com/golang/mock): The project utilizes mockgen, a code generation tool that automatically creates mocks for the defined interfaces. This is particularly useful for isolating units under test and validating their behavior without the need for real implementations. 
 8. Loose Coupling: Designed for independent development, testing, and deployment of microservices.
 
 
 # To Run Project
 
-#### Clone The Repository
-```
-git clone https://github.com/rganes5/Totality-corp-Assignment.git
-```
-#### Checkout To Project Directory
-```
-cd ./Totality-corp-Assignment
-```
-## Run using docker-compose
+## Run using Docker-Compose
 
 ##### Setup env file for docker-compose (look up the .env.example for your reference)
 create .env file on the project root dir and add the below envs on it
@@ -49,7 +41,16 @@ docker compose up
 http://localhost:3000/swagger/index.html
 
 
-# OR TO RUN MANUALLY
+# TO RUN MANUALLY
+
+#### Clone The Repository
+```
+git clone https://github.com/rganes5/Totality-corp-Assignment.git
+```
+#### Checkout To Project Directory
+```
+cd ./Totality-corp-Assignment
+```
 ### . Install Dependencies
 Install the required dependencies using either the provided Makefile command or Go's built-in module management:
 ```bash
