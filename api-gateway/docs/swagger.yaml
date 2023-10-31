@@ -1,0 +1,91 @@
+definitions:
+  models.RequestUserIDList:
+    properties:
+      userId:
+        items:
+          type: integer
+        type: array
+    type: object
+  utils.Response:
+    properties:
+      response:
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact: {}
+  description: 'MICROSERVICES BUILD USING GOLANG following Clean-Code Architecture.
+    External packages used: Gin, Viper, Wire, Swag etc'
+  title: Totality-Crew
+  version: "2.0"
+paths:
+  /user/getbyid/{userId}:
+    get:
+      consumes:
+      - application/json
+      description: LISTING USER BASED ON ID
+      operationId: LIST-USER
+      parameters:
+      - description: Enter the user id
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: API FOR LISTING USER BASED ON ID
+      tags:
+      - USER
+  /user/getbylist:
+    post:
+      consumes:
+      - application/json
+      description: LISTING USERS DETAILS WITH ID'S
+      operationId: LIST-USER-LIST
+      parameters:
+      - description: Enter the user id's
+        in: body
+        name: user_details
+        required: true
+        schema:
+          $ref: '#/definitions/models.RequestUserIDList'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/utils.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Response'
+      summary: API FOR LISTING USERS BASED ON LIST OF ID'S
+      tags:
+      - USER
+swagger: "2.0"
