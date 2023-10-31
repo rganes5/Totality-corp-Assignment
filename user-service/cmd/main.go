@@ -12,7 +12,7 @@ func main() {
 		log.Fatal("Failed to load config", configErr.Error())
 	}
 
-	server, err := wire.InitializeServe(&cfg)
+	server, err := wire.InitializeServe(cfg)
 	if err != nil {
 		log.Fatal("Failed to init server", err.Error())
 	}

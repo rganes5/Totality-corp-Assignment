@@ -10,16 +10,24 @@ type Config struct {
 	Port string `mapstructure:"PORT"`
 }
 
-func LoadConfig() (config Config, err error) {
+var envs = []string{"PORT"}
+
+func LoadConfig() (config *Config, err error) {
 
 	viper.AddConfigPath("./")
-	viper.AddConfigPath("./app")
+	//viper.AddConfigPath("./app")
 	viper.SetConfigFile(".env")
-	viper.AutomaticEnv()
+	//viper.AutomaticEnv()
+	//if err = viper.ReadInConfig(); err != nil {
+	//	log.Println("Error reading the env file from Api-Gateway via Viper", err)
+	//	return
+	//}
+	viper.ReadInConfig()
 
-	if err = viper.ReadInConfig(); err != nil {
-		log.Println("Error reading the env file from Api-Gateway via Viper", err)
-		return
+	for _, env := range envs {
+		if err = viper.BindEnv(env); err != nil {
+			return
+		}
 	}
 
 	if err = viper.Unmarshal(&config); err != nil {

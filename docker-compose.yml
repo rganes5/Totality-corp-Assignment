@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  user-service:
+    image: ganeshraveendran/user-service:latest
+    environment:
+      - PORT=${USER_SVC_PORT}
+    restart: always
+    networks:
+      - mynet
+    ports:
+      - 50051:50051
+
+  api-gateway:
+    image: ganeshraveendran/api-gateway:latest
+    environment:
+      - PORT=${PORT}
+      - USER_SVC_URL=${USER_SVC_URL}
+    restart: always
+    networks:
+      - mynet
+    ports:
+      - 3000:3000
+    depends_on:
+      - user-service
+
+networks:
+  mynet:
+    driver: bridge
