@@ -1,0 +1,42 @@
+syntax="proto3";
+
+package pb;
+
+option go_package = "./pkg/pb";
+
+service UserService{
+    rpc GetUserData (GetUserRequest) returns (GetUserResponse){}
+    rpc GetUserDataList(GetUserDataListRequest) returns (GetUserDataListResponse){}
+}
+
+message GetUserRequest{
+    int32 UserId =1;
+}
+
+message UserData{
+    int32 UserId =1;
+	string City =2;     
+	string FirstName =3;
+	string Phone =4;
+	float Height =5;
+	bool Married =6;
+}
+
+message GetUserResponse{
+    UserData Result =1;
+    int32 status =2;
+    string response =3;
+    string error =4;
+}
+
+message GetUserDataListRequest{
+    repeated int32 UserIdList =1;
+}
+
+message GetUserDataListResponse{
+    repeated UserData Result =1;
+    repeated int32  NotFound    = 2;
+    int32 status =3;
+    string response =4;
+    string error =5;
+}
