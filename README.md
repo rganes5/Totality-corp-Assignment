@@ -62,10 +62,18 @@ go mod tidy
 ```
 cd ./api-gateway
 ```
+```
 go mod tidy
+```
+```
 make proto
+```
+```
 make wire
+```
+```
 make swag
+```
 
 ```bash
 make run
@@ -74,10 +82,18 @@ make run
 ```
 cd ./user-service
 ```
+```
 go mod tidy
+```
+```
 make proto
+```
+```
 make wire
+```
+```
 make swag
+```
 ```bash
 make run
 ```
